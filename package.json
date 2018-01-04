@@ -1,0 +1,27 @@
+{
+    "name": "topological",
+    "version": "1.0.0",
+    "description": "svg and javascript",
+    "main": "index.js",
+    "scripts": {
+        "start": "./node_modules/.bin/webpack-dev-server --hot --inline",
+        "build": "./node_modules/.bin/webpack --progress"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/amyzhang1998/topological.git"
+    },
+    "keywords": ["svg", "javascript"],
+    "author": "zhangxuan",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/amyzhang1998/topological/issues"
+    },
+    "homepage": "https://github.com/amyzhang1998/topological#readme",
+    "devDependencies": {
+        "babel": "^6.23.0",
+        "babel-preset-env": "^1.6.1",
+        "webpack": "^3.10.0",
+        "webpack-dev-server": "^2.9.7"
+    }
+}
