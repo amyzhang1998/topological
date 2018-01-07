@@ -1,11 +1,10 @@
 var path = require("path");
 var webpack = require("webpack");
 module.exports = {
-    context: path.resolve(__dirname, "./"),
+    context: path.resolve(__dirname, "."),
     entry: "./entry.js",
     output: {
         filename: "boundle.js",
-        path: path.resolve(__dirname, "./boundle"),
         publicPath: ""
     },
     resolve: {

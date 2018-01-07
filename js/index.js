@@ -50,18 +50,17 @@ class Main {
         if (!node) return;
         for (let i in params) {
             if (!(i == "fill")) {
-                if (this.check(params[i])) return;
+                if (Main.check(params[i])) return;
             }
             node[i] = params[i];
         }
-        this.remove(id);
+        this.delete(id);
         Main.draw(node);
     }
     delete(id) {
         if (id) {
             db.delete(id);
             const removeNode = document.getElementById(id);
-            console.log(11, svg, db);
             svg.removeChild(removeNode);
             return;
         }

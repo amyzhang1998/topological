@@ -8,10 +8,4 @@ export default class Circle {
         this.fill = fillColor || "none";
         this.id = uuid.v4();
     }
-    static setId() {
-        console.log(111);
-    }
-    getId() {
-        console.log(333);
-    }
 }
