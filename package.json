@@ -1,27 +1,40 @@
 {
-    "name": "topological",
-    "version": "1.0.0",
-    "description": "svg and javascript",
-    "main": "index.js",
-    "scripts": {
-        "start": "./node_modules/.bin/webpack-dev-server --hot --inline",
-        "build": "./node_modules/.bin/webpack --progress"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/amyzhang1998/topological.git"
-    },
-    "keywords": ["svg", "javascript"],
-    "author": "zhangxuan",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/amyzhang1998/topological/issues"
-    },
-    "homepage": "https://github.com/amyzhang1998/topological#readme",
-    "devDependencies": {
-        "babel": "^6.23.0",
-        "babel-preset-env": "^1.6.1",
-        "webpack": "^3.10.0",
-        "webpack-dev-server": "^2.9.7"
-    }
+  "name": "topological",
+  "version": "1.0.0",
+  "description": "svg and javascript",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/webpack-dev-server  --inline",
+    "build": "./node_modules/.bin/webpack --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amyzhang1998/topological.git"
+  },
+  "keywords": [
+    "svg",
+    "javascript"
+  ],
+  "author": "zhangxuan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amyzhang1998/topological/issues"
+  },
+  "homepage": "https://github.com/amyzhang1998/topological#readme",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "html-loader": "^0.5.1",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "dependencies": {
+    "uuid": "^3.1.0"
+  }
 }

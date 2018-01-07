@@ -1,12 +1,36 @@
 var path = require("path");
-
+var webpack = require("webpack");
 module.exports = {
     context: path.resolve(__dirname, "./"),
-    entry: "./app.js",
+    entry: "./entry.js",
     output: {
-        filename: "boundle.js"
+        filename: "boundle.js",
+        path: path.resolve(__dirname, "./boundle"),
+        publicPath: ""
     },
+    resolve: {
+        modules: ["node_modules"],
+        extensions: [".js", ".css"]
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader?sourceMap"]
+            },
+            {
+                test: /\.html$/,
+                use: ["html-loader"]
+            }
+        ]
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin()
+    ],
     devServer: {
-        port: 7000
-    }
+        port: 7000,
+        hot: true
+    },
+    devtool: "eval"
 };
