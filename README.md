@@ -2,6 +2,9 @@
 
 ## svg 圆的 CRUD
 
+查看效果页面：
+https://amyzhang1998.github.io/
+
 > 全局对象 TP,包含方法：
 
 1. create()
