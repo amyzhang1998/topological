@@ -1,4 +1,4 @@
-import Circle from "./Circle";
+import Circle from "./model/Circle";
 let db = new Map();
 let svg = document.querySelector("svg");
 class Main {
