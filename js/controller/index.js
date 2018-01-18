@@ -103,12 +103,13 @@ class Polography {
         });
     }
     init(info) {
-        if (db.get("init")) {
+        if (info && db.get("init")) {
             db.delete("init");
+            db.set("init", info);
         }
-        db.set("init", info);
+        let data = (info && info) || db.get("init");
         this.clear();
-        const formatData = formatGraphyData(info);
+        const formatData = formatGraphyData(data);
         db.set("format", formatData);
 
         //绘制图形
