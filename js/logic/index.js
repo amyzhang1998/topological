@@ -21,7 +21,7 @@ function removeNull(data) {
     return results;
 }
 function countLine(item, data) {
-    if (!item.nextIds) return null;
+    if (!item.nextIds.length) return null;
     let otherEnd = item.nextIds.map(i => data.find(arg => arg.id == i));
     item.pointAxis = [];
     otherEnd.forEach(arg => {
@@ -40,8 +40,6 @@ function formatGraphyData(info) {
         item.nextIds = m(item, data);
         return item;
     });
-
-    formatLineData(result);
     return result;
 }
 function formatLineNode(axis, pointAxis) {

@@ -1,80 +1,80 @@
 let a = [
     {
-        id: 1,
+        id: "1",
         prev: null,
-        level: 0,
+        text: "1",
         axis: { x: 500, y: 130 }
     },
     {
         id: 2,
         prev: 1,
-        level: 1,
+        text: "2",
         axis: { x: 100, y: 270 }
     },
     {
         id: 3,
         prev: 2,
         axis: { x: 20, y: 400 },
-        level: 2
+        text: "3"
     },
     {
         id: 4,
         prev: 2,
-        level: 2,
+        text: "4",
         axis: { x: 130, y: 400 }
     },
     {
         id: 5,
         prev: 2,
-        level: 2,
+        text: "5",
         axis: { x: 250, y: 400 }
     },
     {
         id: 6,
         prev: 1,
-        level: 1,
+        text: "6",
         axis: { x: 500, y: 270 }
     },
     {
         id: 7,
         prev: 6,
         axis: { x: 370, y: 400 },
-        level: 2
+        text: "7"
     },
     {
         id: 8,
         prev: 6,
         axis: { x: 480, y: 400 },
-        level: 2
+        text: "8"
     },
     {
         id: 9,
         prev: 6,
         axis: { x: 590, y: 400 },
-        level: 2
+        text: "9"
     },
     {
         id: 10,
         prev: 1,
-        level: 1,
+        text: "10",
         axis: { x: 800, y: 270 }
     },
     {
         id: 11,
         prev: 10,
         axis: { x: 680, y: 400 },
-        level: 2
+        text: "11"
     },
     {
         id: 12,
         prev: 10,
         axis: { x: 800, y: 400 },
-        level: 2
+        text: "12"
     },
     {
         id: 13,
         prev: 10,
-        level: 2,
+        text: "13",
         axis: { x: 930, y: 400 }
     }
 ];
@@ -94,9 +94,11 @@ class Polography {
         Line.draw(axis, lineAxis, textAxis);
     }
     static draw(data) {
+        console.log(112, data);
         data.forEach(item => {
             let { pointAxis, axis } = item;
             (pointAxis &&
+                pointAxis.length &&
                 pointAxis.map(arg => Polography.drawLine(axis, arg))) ||
                 null;
             Circle.draw(item);
@@ -111,7 +113,7 @@ class Polography {
         this.clear();
         const formatData = formatGraphyData(data);
         db.set("format", formatData);
-
+        formatLineData(formatData);
         //绘制图形
         Polography.draw(formatData);
     }

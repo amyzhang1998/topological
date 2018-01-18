@@ -7,9 +7,10 @@ function GNode(axis) {
     g.setAttribute("transform", `translate(${x},${y})`);
     return g;
 }
-function TextNode(node) {
+function TextNode(node, content) {
+    let textContent = (content && content) || "XXXX";
     let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    let textNode = document.createTextNode("XXXX");
+    let textNode = document.createTextNode(textContent);
     text.setAttribute("x", node.x);
     text.setAttribute("y", node.y);
     text.style.setProperty("font-family", "simsun"); //字体为宋体
@@ -21,7 +22,7 @@ class CircleView {
     draw(node) {
         const { axis, id } = node;
         let g = GNode(axis);
-        let text = TextNode({ x: r, y: r + fontSize / 2 });
+        let text = TextNode({ x: r, y: r + fontSize / 2 }, node.text);
         let circle = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "circle"
