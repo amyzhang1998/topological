@@ -94,7 +94,6 @@ class Polography {
         Line.draw(axis, lineAxis, textAxis);
     }
     static draw(data) {
-        console.log(112, data);
         data.forEach(item => {
             let { pointAxis, axis } = item;
             (pointAxis &&
