@@ -1,4 +1,4 @@
-let r = 30;
+// let r = 30;
 // function flatten(data) {
 //     return (
 //         data &&
@@ -22,17 +22,25 @@ function removeNull(data) {
 }
 function countLine(item, data) {
     if (!item.nextIds.length) return null;
-    let otherEnd = item.nextIds.map(i => data.find(arg => arg.id == i));
+    let otherEnd = item.nextIds.map(i => data.find(arg => arg.id == i.id));
     item.pointAxis = [];
     otherEnd.forEach(arg => {
-        item.pointAxis.push(arg.axis);
+        let axis = arg.axis;
+        let pointR = arg.r;
+        let pointId = arg.id;
+        item.pointAxis.push({ axis, pointR, pointId });
     });
 }
 function formatLineData(data) {
     return removeNull(data.map(item => countLine(item, data)));
 }
 function m(arg, data) {
-    return data.filter(item => arg.id == item.prev).map(item => item.id);
+    return data.filter(item => arg.id == item.prev).map(item => {
+        return {
+            id: item.id,
+            r: item.r
+        };
+    });
 }
 function formatGraphyData(info) {
     let data = JSON.parse(info);
@@ -42,18 +50,18 @@ function formatGraphyData(info) {
     });
     return result;
 }
-function formatLineNode(axis, pointAxis) {
+function formatLineNode(axis, pointAxis, r, pointR) {
     const { x, y } = pointAxis;
     const xVal = x - axis.x;
     const yVal = y - axis.y;
     const constVal = Math.sqrt(2) / 2 * r;
-    const points = [r, r, xVal + r, yVal + r].join();
+    const points = [r, r * 2, xVal + pointR, yVal].join();
     return points;
 }
-function formatTextAxis(data) {
+function formatTextAxis(data, r) {
     const aVal = data.split(",");
-    const y = +aVal.pop() + 30;
-    const x = +aVal.pop() + 30;
+    const y = +aVal.pop() + r;
+    const x = +aVal.pop() + r;
     return { x: x / 2, y: y / 2 };
 }
 

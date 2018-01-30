@@ -1,18 +1,28 @@
-let r = 30;
+// let r = 30;
 let fontSize = 15;
 let svg = document.querySelector("svg");
-function GNode(axis) {
+let gElement = document.getElementsByClassName("layer")[0];
+function GNode(axis, id, flag) {
     let { x, y } = axis;
     let g = document.createElementNS("http://www.w3.org/2000/svg", "g");
     g.setAttribute("transform", `translate(${x},${y})`);
+    if (id) {
+        g.setAttribute("class", id);
+    }
+    if (flag) {
+        g.setAttribute("class", `${id} ${flag}`);
+    }
     return g;
 }
-function TextNode(node, content) {
+function TextNode(node, content, flag) {
     let textContent = (content && content) || "XXXX";
     let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
     let textNode = document.createTextNode(textContent);
     text.setAttribute("x", node.x);
     text.setAttribute("y", node.y);
+    if (flag) {
+        text.setAttribute("class", flag);
+    }
     text.style.setProperty("font-family", "simsun"); //字体为宋体
     text.style.setProperty("font-size", fontSize);
     text.appendChild(textNode);
@@ -20,8 +30,8 @@ function TextNode(node, content) {
 }
 class CircleView {
     draw(node) {
-        const { axis, id } = node;
-        let g = GNode(axis);
+        const { axis, id, r } = node;
+        let g = GNode(axis, id, "circle");
         let text = TextNode({ x: r, y: r + fontSize / 2 }, node.text);
         let circle = document.createElementNS(
             "http://www.w3.org/2000/svg",
@@ -31,17 +41,24 @@ class CircleView {
         circle.setAttribute("cy", r);
         circle.setAttribute("r", r);
         circle.setAttribute("id", id);
-        circle.setAttribute("fill", "pink");
-        circle.setAttribute("stroke", "black");
+        circle.setAttribute("fill", "#4082e6");
+        circle.setAttribute("stroke", "#4082e6");
         g.appendChild(circle);
         g.appendChild(text);
-        svg.appendChild(g);
+        gElement.appendChild(g);
+        svg.appendChild(gElement);
+
+        // svg.appendChild(g);
     }
 }
 class LineView {
-    draw(axis, points, textAxis) {
-        let g = GNode(axis);
-        let text = TextNode(textAxis);
+    draw(axis, points, textAxis, id, pointId) {
+        let gCls = "";
+        if (id || pointId) {
+            gCls = `${id} p-${pointId}`;
+        }
+        let g = GNode(axis, gCls);
+        let text = TextNode(textAxis, "", "lineText");
         let polyline = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "polyline"
@@ -49,9 +66,11 @@ class LineView {
         polyline.setAttribute("points", points);
         polyline.setAttribute("stroke", "black");
         polyline.setAttribute("stroke-width", 1);
+        polyline.setAttribute("class", "line");
         g.appendChild(polyline);
         g.appendChild(text);
-        svg.appendChild(g);
+        gElement.appendChild(g);
+        svg.appendChild(gElement);
     }
 }
 class TextView {
@@ -67,7 +86,8 @@ class TextView {
         text.style.setProperty("font-family", "simsun"); //字体为宋体
         text.style.setProperty("font-size", "15");
         text.appendChild(textNode);
-        svg.appendChild(text);
+        gElement.appendChild(text);
+        svg.appendChild(gElement);
     }
 }
 

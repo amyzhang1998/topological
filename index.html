@@ -7,12 +7,31 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>SVG Topological Graph</title>
     <link rel="stylesheet" href="">
+
 </head>
+
 
 <body>
     <div id="svgContainer">
         <svg width="1000" height="800" id="svg">
+            <g class='layer' id='layer' transform='translate(0,0),scale(1)'></g>
         </svg>
+    </div>
+    <div id='param'>
+        <p>节点属性更改：</p>
+        <div class='child'>
+            <label for="id">节点 ID：</label>
+            <input type="text" id='id' autocomplete="off">
+        </div>
+        <div class='child'>
+            <label for="roll">节点半径：</label>
+            <input type="text" id='roll' autocomplete="off">
+        </div>
+        <!-- <div class='child'>
+            <label for="color">节点颜色：</label>
+            <input type="text" id='color' autocomplete="off">
+        </div> -->
+        <button onClick={TP.update()}>确定</button>
     </div>
     <script type="text/javascript" src="./boundle.js"></script>
 </body>

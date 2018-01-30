@@ -1,8 +1,18 @@
 svg {
-    background: rgb(92, 162, 187);
+    background: rgb(194, 212, 218);
 }
-text{
+text {
     fill: #fff;
     text-anchor: middle;
     stroke: none;
+}
+#svgContainer {
+    display: inline-block;
+}
+#param {
+    float: right;
+    padding-right: 50px;
+}
+.child {
+    margin: 10px 0;
 }
