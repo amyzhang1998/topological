@@ -27,13 +27,20 @@ function getValue(param) {
 function onMouseDown(e) {
     if (!e) return;
     let parenTargetCls = e.target.parentNode.getAttribute("class");
-    let node = null;
     let target = e.target;
     if (target.id == "svg") {
         this.move = {};
         this.move.x = e.clientX;
         this.move.y = e.clientY;
     }
+    let activeNode = document.getElementsByClassName("active");
+    if (activeNode.length) {
+        let activeCls = activeNode[0].getAttribute("class");
+        if (!(parenTargetCls == activeCls)) {
+            removeElementActive(activeNode[0], activeCls);
+        }
+    }
+
     if (parenTargetCls && parenTargetCls.split(" ")[1] == "circle") {
         this.moveCircle = {};
         this.moveCircle.x = e.clientX;
@@ -191,4 +198,7 @@ function onWheel(e) {
     }
     zoom(value);
 }
-export { onMouseDown, onMouseMove, onMouseUp, onWheel };
+function onKeyUp(e) {
+    console.log("keyup");
+}
+export { onMouseDown, onMouseMove, onMouseUp, onWheel, onKeyUp };

@@ -198,19 +198,18 @@ class Polography {
         //绘制新的节点
         this.draw(data);
     }
-    onKeyUp(e) {
-        console.log(12, e.keyup);
-    }
-    addElementEventListener() {
-        let nodes = document.getElementsByClassName("circle");
-        console.log(124, nodes);
-        for (let i = 0; i < nodes.length; i++) {
-            nodes[i].addEventListener("keyup", this.onKeyUp, false);
-        }
-    }
+    // onKeyUp(e) {
+    //     console.log(12, e.keyup);
+    // }
+    // addElementEventListener() {
+    //     let nodes = document.getElementsByClassName("circle");
+    //     console.log(124, nodes);
+    //     for (let i = 0; i < nodes.length; i++) {
+    //         nodes[i].addEventListener("keyup", this.onKeyUp, false);
+    //     }
+    // }
 }
 dragController.addLayerEventListener();
 
 window.TP = new Polography();
 TP.init();
-TP.addElementEventListener();
